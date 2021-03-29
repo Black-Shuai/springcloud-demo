@@ -21,7 +21,8 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @PostMapping("/create")
-    public CommonResult addPayment(Payment payment){
+    public CommonResult addPayment(@RequestBody Payment payment){
+        System.out.println("插入数据"+payment);
         return restTemplate.postForObject(PAYMENT_URL+"/api/payment/addPayment",payment,CommonResult.class);
     }
     @GetMapping("/findPaymentById/{id}")
