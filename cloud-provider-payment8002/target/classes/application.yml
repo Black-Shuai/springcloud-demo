@@ -1,8 +1,25 @@
 server:
-  port: 801
+  servlet:
+    encoding:
+      charset: UTF-8
+  port: 8002
+
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.43.128.208:3306/privateblog?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: ZW123.
   application:
-    name: cloud-consumer-service
+    #微服务注册名称
+    name: cloud-payment-service
+debug: true
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+
 eureka:
   client:
     #表示是否将自己注册进EurekaServer，默认为true

@@ -1,10 +1,10 @@
 server:
-  port: 7001
+  port: 7003
 
 eureka:
   instance:
-    #若在一台电脑上面进行运行，那么需要在C:\windows\System32\driver\host(windos);\etc\host(Linux)中添加修改127.0.0.1   eureka7001.com
-    hostname: eureka7001.com #eureka服务端的实列名称
+    #若在一台电脑上面进行运行，那么需要在C:\windows\System32\driver\host(windos);\etc\host(Linux)中添加修改127.0.0.1   eureka7003.com
+    hostname: eureka7003.com #eureka服务端的实列名称
   client:
     #false表示不向注册中心注册自己
     register-with-eureka: false
@@ -13,4 +13,4 @@ eureka:
     service-url:
       #设置与Eureka Server交互的地址查询地址查询服务和注册服务都需要依赖这个地址
       #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
