@@ -12,10 +12,12 @@ import java.net.URL;
 @CrossOrigin
 @RestController
 @Slf4j
-@RequestMapping("/api/comsumer/payment")
+@RequestMapping("/api/comsumer/payment801")
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    单机版可以这么写，不能写死
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://cloud-payment-service";
 
     @Resource
     private RestTemplate restTemplate;
@@ -28,5 +30,9 @@ public class OrderController {
     @GetMapping("/findPaymentById/{id}")
     public CommonResult findPaymentById(@PathVariable("id") String id){
         return restTemplate.getForObject(PAYMENT_URL+"/api/payment/findPaymentById/"+id,CommonResult.class);
+    }
+    @GetMapping("/discovery")
+    public CommonResult findPaymentById(){
+        return restTemplate.getForObject(PAYMENT_URL+"/api/payment/discovery",CommonResult.class);
     }
 }
