@@ -22,7 +22,7 @@ public class OrderZKController {
 
     @GetMapping(value = "/findServerPort")
     public CommonResult paymentInfo(){
-        String result=restTemplate.getForObject(INCKE_URL+"/api/payment8004/findServerPort",String.class);
+        String result=restTemplate.getForObject(INCKE_URL+"/api/payment/findServerPort",String.class);
         return new CommonResult(200,"获取数据成功",result);
     }
 }
