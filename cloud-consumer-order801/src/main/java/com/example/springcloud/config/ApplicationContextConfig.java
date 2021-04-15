@@ -8,7 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ApplicationContextConfig {
     @Bean
-    @LoadBalanced//使用@LoadBalanced注解赋予Restemplate负载均衡的能力，对服务进行轮询访问
+//    @LoadBalanced//使用@LoadBalanced注解赋予Restemplate负载均衡的能力，对服务进行轮询访问
+
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

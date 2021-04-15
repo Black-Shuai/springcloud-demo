@@ -61,4 +61,9 @@ public class PaymentController {
         }
         return new CommonResult(200,"获取数据成功,服务端口号:"+serverPort,this.discoveryClient);
     }
+
+    @GetMapping("/getPaymentLB")
+    public String getPaymentLB(){
+        return serverPort;
+    }
 }
