@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 @CrossOrigin
 @RestController
 @Slf4j
-@RequestMapping(value = "/api/zkconsumer/payment802")
+@RequestMapping(value = "/api/zkconsumer/payment")
 public class OrderZKController {
     public static final String INCKE_URL="http://cloud-provider-payment";
 

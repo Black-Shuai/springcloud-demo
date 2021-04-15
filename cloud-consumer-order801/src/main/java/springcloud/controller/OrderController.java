@@ -3,6 +3,7 @@ package springcloud.controller;
 import com.example.springcloud.entities.CommonResult;
 import com.example.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,7 +12,7 @@ import javax.annotation.Resource;
 @CrossOrigin
 @RestController
 @Slf4j
-@RequestMapping("/api/comsumer/payment801")
+@RequestMapping("/api/comsumer/payment")
 public class OrderController {
 
 //    单机版可以这么写，不能写死
@@ -33,5 +34,15 @@ public class OrderController {
     @GetMapping("/discovery")
     public CommonResult findPaymentById(){
         return restTemplate.getForObject(PAYMENT_URL+"/api/payment/discovery",CommonResult.class);
+    }
+    @GetMapping("/getForEntity/{id}")
+    public CommonResult getPaymentById(){
+        ResponseEntity<CommonResult> entity=restTemplate.getForEntity(PAYMENT_URL+"/api/payment/discovery",CommonResult.class);
+
+        if (entity.getStatusCode().is2xxSuccessful()){
+            return entity.getBody();
+        }else {
+            return new CommonResult(400,"操作失败");
+        }
     }
 }
