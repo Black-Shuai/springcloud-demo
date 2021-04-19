@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @CrossOrigin
 @RestController
@@ -62,8 +63,19 @@ public class PaymentController {
         return new CommonResult(200,"获取数据成功,服务端口号:"+serverPort,this.discoveryClient);
     }
 
-    @GetMapping("/getPaymentLB")
+    @GetMapping(value = "/getPaymentLB")
     public String getPaymentLB(){
+        return serverPort;
+    }
+
+    @GetMapping(value = "/timeoutPayment")
+    public String PaymentFeignTimeout(){
+        try{
+            //停止3秒钟
+            TimeUnit.SECONDS.sleep(3);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         return serverPort;
     }
 }
